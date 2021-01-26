@@ -8,6 +8,7 @@ body
   margin: 0px
   color: $veryDarkDesaturatedBlue
   background-image: linear-gradient(180deg, $softViolet 38%, $softBlue)
+  height: 100vh
 
   
 *, *::before, *::after
@@ -19,18 +20,42 @@ body
 
 .main
   @include flex-column(center, center)
-  position: relative
+  height: 100%
+  padding: 20px 0px
+  overflow-y: scroll
+
+  > div:not(:last-child)
+    margin: 40px 0px
+    @include flex-column(center, center)
+
+    // @include breakpoint-up (large)
+    //  background: black
+    // @include flex-column(center, center)
+    position: relative
+    transform: translateY(58px)
+    // top: 50px
+    width: 85%
+    height: max-content
+    max-height: 100vh
+    background-color: white
+    padding: 110px 20px 50px 20px
+    border-radius: 15px
+    box-shadow: 8px 12px 48px 0px #2e2a336e
+
   // overflow: hidden
   &__illustration
     position: absolute
-    top: $faq_posY - 23
+    top: -50px
+    transform: translateY(-40px)
     background-image: url("../../../images/bg-pattern-mobile.svg")
+    background-size: 195px
     background-repeat: no-repeat
-    background-position: center 97%
+    background-position: 21% 99%
     text-align: center
     z-index: 1
     img
       position: relative
+      width: 226px
       top: -13px
       left: -17px
       // width: 210px
@@ -38,14 +63,9 @@ body
   &__faq
     position: relative
     @include flex-column (center, center)
+
     // top: $faq_posY
-    margin-top: 150px
-    margin-bottom: 40px
-    width: 80%
-    background-color: white
-    padding: 130px 20px 50px 20px
-    border-radius: 15px
-    box-shadow: 8px 12px 48px 0px #2e2a336e
+    
     overflow: hidden
     // max-height: 100vh
 
