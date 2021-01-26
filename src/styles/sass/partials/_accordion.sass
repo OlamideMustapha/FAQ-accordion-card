@@ -1,0 +1,90 @@
+$title_color: $veryDarkDesaturatedBlue
+$content_color: $darkGrayishBlue
+
+$title_size: 12px
+$content_size: 11px
+  
+.accordion
+  list-style-type: none
+  &__item
+    border-bottom: solid 1px $lightGrayishBlue
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    margin-top: 15px
+    padding: 5px 0px
+    
+    &-header
+      @include flex-row (space-between, center)
+      margin-bottom: 8px
+    &-title
+      color: $title_color
+      font-size: $title_size
+      font-weight: 500
+    &-btn
+      transition: all .7s ease-in-out
+      img
+        transition: all .7s ease-in-out
+    &-text
+      visibility: hidden
+      color: $content_color
+      font-size: $content_size
+      line-height: 1.5em
+      height: 0px
+
+.activate
+  transition: all .7s ease-in-out
+
+  & .accordion
+    &__item
+      &-title
+        font-weight: 700
+      &-btn
+        img
+          transform: rotate(180deg)
+      &-text
+        display: inline
+        animation: content-display 1s ease-in-out
+        visibility: visible
+        opacity: 1
+        padding: 10px 0px
+        height: max-content
+
+
+@keyframes content-display
+  0%
+    opacity: 0
+    transform: translateX(60px)
+
+  50%
+    opacity: 0
+  100%
+    opacity: 1
+    transform: translateX(0px)
+
+
+.deactivate
+  transition: all .7s ease-in-out
+  & .accordion
+    &__item-text
+      animation: content-hidden 1s ease-in-out
+      visibility: hidden
+
+
+@keyframes content-hidden
+  0%
+    opacity: 1
+    transform: translateX(0px)
+    visibility: visible
+    padding: 10px 0px
+    height: max-content
+
+  100%
+    opacity:0
+    transform: translateX(60px)
+    visibility: hidden
+    padding: 10px 0px
+    height: max-content
+
+
+
