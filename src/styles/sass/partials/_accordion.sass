@@ -1,8 +1,8 @@
 $title_color: $veryDarkDesaturatedBlue
 $content_color: $darkGrayishBlue
 
-$title_size: 12px
-$content_size: 11px
+$title_size: 100%
+$content_size: 90%
   
 .accordion
   list-style-type: none
@@ -11,15 +11,17 @@ $content_size: 11px
     display: flex
     flex-direction: column
     justify-content: space-between
-    margin-top: 15px
-    padding: 5px 0px
+    margin-top: 5%
+    padding: 3% 0
     
     &-header
       @include flex-row (space-between, center)
-      margin-bottom: 8px
+      margin-bottom: 3%
     &-title
-      color: $title_color
+      color: $veryDarkGrayishBlue
       font-size: $title_size
+      @include breakpoint-up (medium)
+        font-size: $title_size + 3
       font-weight: 500
     &-btn
       transition: all .7s ease-in-out
@@ -29,6 +31,10 @@ $content_size: 11px
       visibility: hidden
       color: $content_color
       font-size: $content_size
+
+      @include breakpoint-up (medium)
+        font-size: $content_size + 3
+     
       line-height: 1.5em
       height: 0px
 
@@ -38,16 +44,17 @@ $content_size: 11px
   & .accordion
     &__item
       &-title
-        font-weight: 700
+        color: $title_color
+        font-weight: 800
       &-btn
         img
           transform: rotate(180deg)
       &-text
         display: inline
-        animation: content-display 1s ease-in-out
+        animation: content-display 0.8s ease-in-out
         visibility: visible
         opacity: 1
-        padding: 10px 0px
+        padding: 3% 0
         height: max-content
 
 
@@ -56,13 +63,13 @@ $content_size: 11px
     visibility: visible
     opacity: 0
     transform: translateX(60px)
-    padding: 10px 0px
+    padding: 3% 0
     height: max-content
-
 
   50%
     visibility: visible
-    opacity: 0
+    opacity: 0.5
+    transform: translateX(30px)
     height: max-content
 
   100%
@@ -70,6 +77,7 @@ $content_size: 11px
     opacity: 1
     transform: translateX(0px)
     height: max-content
+    padding: 3% 0
 
 
 
@@ -77,7 +85,7 @@ $content_size: 11px
   transition: all .7s ease-in-out
   & .accordion
     &__item-text
-      animation: content-hidden 1s ease-in-out
+      animation: content-hidden 0.8s ease-in-out
       visibility: hidden
 
 
@@ -86,14 +94,19 @@ $content_size: 11px
     opacity: 1
     transform: translateX(0px)
     visibility: visible
-    padding: 10px 0px
+    padding: 3% 0
     height: max-content
-
+  50%
+    opacity: 0.5
+    transform: translateX(30px)
+    visibility: visible
+    padding: 3% 0
+    height: max-content
   100%
     opacity:0
     transform: translateX(60px)
     visibility: hidden
-    padding: 10px 0px
+    padding: 3% 0
     height: max-content
 
 

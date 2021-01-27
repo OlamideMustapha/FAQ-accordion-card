@@ -1,5 +1,6 @@
 $faq_posY: 30%
   
+
 body
   font-family: 'Kumbh Sans', sans-serif
   font-size: .75em
@@ -18,6 +19,7 @@ body
 
 
 .main
+  position: relative
   @include flex-column(center, center)
   padding: 20px 0px
   min-height: 100vh
@@ -26,52 +28,94 @@ body
   background-image: linear-gradient(180deg, $softViolet 38%, $softBlue)
 
   > div:not(:last-child)
-    margin: 40px 0px
-    @include flex-column(center, center)
+    @include breakpoint-down (small)
+      @include flex-column(center, center)
+      margin: 9%
+      top: 15%
+      transform: translateY(50px)
+      padding: 27% 5% 13% 5%
+      height: max-content
+    
 
-    // @include breakpoint-up (large)
-    //  background: black
-    // @include flex-column(center, center)
-    position: relative
-    transform: translateY(58px)
-    width: 80%
-    height: max-content
-    max-height: 100vh
+    @include flex-row(center, center)
+    position: absolute
+    width: 75vw
+    min-height: 40vw
+    padding: 4% 7% 4% 0px
+
     background-color: white
-    padding: 110px 20px 50px 20px
-    border-radius: 15px
+    border-radius: 18px
     box-shadow: 8px 12px 48px 0px #2e2a336e
 
-  // overflow: hidden
   &__illustration
-    position: absolute
-    top: -50px
-    transform: translateY(-33px)
-    background-image: url("../../../images/bg-pattern-mobile.svg")
-    background-size: 195px
-    background-repeat: no-repeat
-    background-position: 21% 99%
-    text-align: center
-    z-index: 1
-    img
+    @include breakpoint-down (small)
+      @include flex-row (center, center)
+      position: absolute
+      top: 0
+      transform: translateY(-56%)
+      background-image: url("../../../images/bg-pattern-mobile.svg")
+      background-size: 75%
+      background-repeat: no-repeat
+      background-position: center bottom
+      text-align: center
+      z-index: 1
+      width: 100%
+      height: 60vw
+      @include breakpoint-up (small)
+        height: 46vw
+
+    @include breakpoint-up (medium)
+      background-image: url("../../../images/bg-pattern-desktop.svg")
       position: relative
-      width: 226px
-      top: -13px
-      left: -17px
-      // width: 210px
+      width: 50rem
+      height: 30rem
+
+    .mobile__illustration
+      position: absolute
+      width: 100%
+      height: 100%
+      background-image: url("../../../images/illustration-woman-online-mobile.svg")
+      background-size: 80%
+      background-repeat: no-repeat
+      background-position: 31% center
 
   &__faq
     position: relative
     @include flex-column (center, center)
-
-    // top: $faq_posY
-    
     overflow: hidden
-    // max-height: 100vh
+    @include breakpoint-up (medium)
+      @include flex-column (center, flex-start)
 
     &-heading
       font-size: 32px
       color: $veryDarkDesaturatedBlue
-      margin: 10px 0px
+      margin: 3% 0%
+      @include breakpoint-down (xsmall)
+        margin-top: 10%
+
     &-items
       width: 100%
+
+.hide_mobile
+  @include breakpoint-up (medium)
+    display: none
+.hide_desktop
+  @include breakpoint-down (small)
+    display: none
+
+
+.desktop__illustration
+  position: relative
+  background-repeat: no-repeat
+  background-size: 80%
+  width: 100%
+  height: 100%
+  &#img__woman-desktop
+    background-image: url("../../../images/illustration-woman-online-desktop.svg")
+    background-position: -62% center
+  &#img__box-desktop
+    width: 43%
+    background-image: url("../../../images/illustration-box-desktop.svg")
+    background-position: center center
+
+
